@@ -23,14 +23,18 @@ jobs:
           image: "c2-deeplearning-pytorch-2-4-cu124-v20241224-debian-11"
           machine_zone: "us-central1-a"
           machine_type: "g2-standard-4"
-          disk_size: "400"
+          disk_size: "100"
           accelerator: "count=1,type=nvidia-l4"
 
   test:
     needs: create-runner
     runs-on: ${{ needs.create-runner.outputs.label }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout
+
+      - name: Install uv
+        uses: astral-sh/setup-uv
+
       - name: run
         run: |
           uv run python test.py
