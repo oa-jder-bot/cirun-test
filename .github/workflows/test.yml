@@ -19,10 +19,11 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           runner_service_account: ${{ secrets.GCP_RUNNER_SA_EMAIL }}
+          image_project: "ml-images"
           image: "c2-deeplearning-pytorch-2-4-cu124-v20241224-debian-11"
           machine_zone: "us-central1-a"
           machine_type: "n1-standard-4"
-          disk_size: "100"
+          disk_size: "400"
           accelerator: "count=1,type=nvidia-tesla-t4"
 
   test:
