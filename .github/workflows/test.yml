@@ -24,7 +24,7 @@ jobs:
           machine_zone: "us-central1-a"
           machine_type: "g2-standard-4"
           disk_size: "400"
-          accelerator: "count=1,type=nvidia-tesla-l4"
+          accelerator: "count=1,type=nvidia-l4"
 
   test:
     needs: create-runner
