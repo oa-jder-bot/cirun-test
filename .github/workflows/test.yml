@@ -23,7 +23,7 @@ jobs:
           image: c0-deeplearning-common-cu124-v20241224-debian-11-py310
           machine_zone: "us-central1-a"
           machine_type: "g2-standard-4"
-          disk_size: "100"
+          disk_size: "200"
           accelerator: "count=1,type=nvidia-l4"
 
   test:
