@@ -21,15 +21,19 @@ jobs:
           runner_service_account: ${{ secrets.GCP_RUNNER_SA_EMAIL }}
           image_project: "ml-images"
           image: c0-deeplearning-common-cu124-v20241224-debian-11-py310
-          machine_zone: "us-east4-a"
-          machine_type: "n1-standard-4"
+          machine_zone: "us-central1-a"
+          machine_type: "g2-standard-4"
           disk_size: "200"
-          accelerator: "count=1,type=nvidia-tesla-t4"
+          accelerator: "count=1,type=nvidia-l4"
 
   test:
     needs: create-runner
     runs-on: ${{ needs.create-runner.outputs.label }}
     steps:
+      - name: install CUDA drivers
+        run: |
+          sudo /opt/deeplearning/install-driver.sh
+
       - uses: actions/checkout@v4
 
       - name: Install uv
